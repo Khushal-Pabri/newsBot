@@ -20,10 +20,7 @@ client.on('ready', async (c) => {
 	await loadAndScheduleJobs(client);
 });
 
-//old command handler(parsing message)
-const commandHandler = require("./commandHandler");
 client.on('messageCreate', async (message) => {
-    commandHandler(message);
 });
 
 //new command handler(slash commands)
