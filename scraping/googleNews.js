@@ -1,8 +1,4 @@
 const puppeteer = require('puppeteer');
-
-// const connectDB = require('../config/db.js');
-// connectDB();
-const News = require('../models/articles');
 require("dotenv").config()
 
 const categories = {
@@ -110,40 +106,13 @@ const main = async (categoriesArray) => {
         return results;
     } catch (error) {
         console.error('Error during scraping:', error);
-        return {}; // Return empty results or handle error as needed
+        return {}; 
     } finally {
         await browser.close();
     }
 
-    // try{
-    //     const results = {};
-    //     const promises = categoriesArray.map(async (category) => {
-    //         const page = await browser.newPage();
-    //         const categoryResult = await scrapeCategory(page, category);
-    //         await archiveNewsArticles(category, categoryResult.articlesData);
-    //         results[category] = { articleCount: categoryResult.articleCount, articlesData: categoryResult.articlesData };
-    //         await page.close();
-    //     });
-
-    //     await Promise.all(promises);
-    //     return results;
-    // }catch (error) {
-    //     console.error('Error during scraping:', error);
-    //     return {}; // Return empty results or handle error as needed
-    // } finally {
-    //     await browser.close();
-    // }
 }
 
 
-// test
-// (async () => {
-//     try {
-//         const result = await main(['india', 'health']);
-//         console.log(result);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// })();
 
 module.exports = main;

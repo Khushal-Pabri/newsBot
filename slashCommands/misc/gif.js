@@ -16,6 +16,5 @@ module.exports = {
         let json = await response.json();
         console.log(json);
 		await interaction.reply(`${json.results[0].url}\n\nGIF for: ${search}`);
-        // await interaction.followUp(`GIF for: ${search}`);
 	},
 };

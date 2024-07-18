@@ -8,7 +8,6 @@ module.exports = {
         .addStringOption(option =>
             option.setName('search')
                 .setDescription('Search for any topic')
-                // .setRequired(true)
             ),
 	async execute(interaction) {
         const search = interaction.options.getString('search');

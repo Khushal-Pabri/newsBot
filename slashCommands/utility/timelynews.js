@@ -1,8 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const User = require('../../models/user');
-// const scrapeNews = require('../../scraping/googleNews');
-// const schedule = require('node-schedule');
-// const createNewsEmbed = require('../../embeds/news');
 const { scheduleUserJob } = require('../../scraping/scheduleScraping');
 
 module.exports = {
@@ -30,26 +27,6 @@ module.exports = {
         await user.save();
 
         const { preferences } = user;
-
-        // const job = schedule.scheduleJob(`*/${user.newsInterval} * * * *`, async () => {
-        //     try
-        //     {
-        //         const result = await scrapeNews(preferences);
-        //         for(category of preferences)
-        //         {
-        //             const articles = result[category].articlesData;
-
-        //             const embed = createNewsEmbed(category, articles);
-
-        //             // await interaction.followUp({ embeds: [embed] });
-        //             const channel = await interaction.client.channels.fetch(channelId);
-        //             await channel.send({ embeds: [embed] });
-        //         }
-        //     }catch(error){
-        //         console.error(error);
-        //         await interaction.followUp('Sorry, there was an error fetching the news articles.');
-        //     }
-        // });
 
         scheduleUserJob(user, interaction.client);
 	},

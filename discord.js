@@ -83,13 +83,10 @@ client.on('interactionCreate', async (interaction) => {
 	let user = await User.findOne({discordId: interaction.user.id});
 	if(user)
 	{
-		// let user = await User.findOne({discordId: interaction.user.id});
 		console.log(user);
 		user.preferences = interaction.values;	
 		await user.save();
-		// await User.updateOne({discordId: interaction.user.id}, {$set: {preferences: interaction.values}});
 		console.log("updating profile")
-		// user = await User.findOne({discordId: interaction.user.id});
 		await scheduleUserJob(user, interaction.client);
 		await interaction.reply(`Your profile has been updated!`);
 	}

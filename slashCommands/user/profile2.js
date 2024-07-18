@@ -1,6 +1,5 @@
-const { ActionRowBuilder, SlashCommandBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, Embed } = require('discord.js');
+const { ActionRowBuilder, SlashCommandBuilder } = require('discord.js');
 require("dotenv").config();
-const User = require('../../models/user');
 const preferencesMenu = require('../../selectMenus/preferences.js');
 const createProfileEmbed = require('../../embeds/profile.js');
 

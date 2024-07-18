@@ -10,11 +10,11 @@ const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) 
 {
-	const commandsPath = path.join(foldersPath, folder);//path of each folder inside slashCommands
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));//all files in the current folder
+	const commandsPath = path.join(foldersPath, folder);
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) 
     {
-		const filePath = path.join(commandsPath, file);//path of a particular command
+		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 	
 		if ('data' in command && 'execute' in command) 
@@ -35,7 +35,6 @@ const rest = new REST().setToken(process.env.DISCORD_TOKEN);
     {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
-		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
 			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
 			{ body: commands },

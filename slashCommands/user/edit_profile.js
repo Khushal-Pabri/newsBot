@@ -27,6 +27,5 @@ module.exports = {
                 components: [row],
             });
         }
-        // await interaction.reply(`Your profile has been edited`);
 	},
 };
