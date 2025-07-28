@@ -2,6 +2,7 @@ const User = require('../models/user');
 const scrapeNews = require('./googleNews');
 const schedule = require('node-schedule');
 const createNewsEmbed = require('../embeds/news');
+const createErrorEmbed = require('../embeds/error');
 
 async function cancelExistingJob(user) {
     const {scheduledJob} = user;
@@ -37,7 +38,9 @@ async function scheduleUserJob(user, interactionClient)
         }catch(error){
             console.error(error);
             const channel = await interactionClient.channels.fetch(channelId);
-            await channel.send('Sorry, there was an error fetching the news articles.');
+            const message = 'Sorry, there was an error fetching the news articles.'
+            const errorEmbed = createErrorEmbed(message);
+            await channel.send({ embeds: [errorEmbed] });
         }
     });
 }

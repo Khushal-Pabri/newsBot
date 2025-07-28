@@ -1,12 +1,11 @@
 const { EmbedBuilder } = require('discord.js');
 
-function createErrorEmbed(message)
+function createConformationEmbed(message)
 {
     const embed = new EmbedBuilder()
-    .setColor(0xEE4B2B)
+    .setColor(0x66FF00)
     .setTitle(`${message}`)
-    .setTimestamp()
     return embed;
 }
 
-module.exports = createErrorEmbed;
+module.exports = createConformationEmbed;

@@ -8,7 +8,7 @@ function createArchivedNewsEmbed(category, articles)
     }));
 
     const embed = new EmbedBuilder()
-    .setColor(0x0099FF)
+    .setColor(0x900C3F)
     .setTitle(`Here are the archived news articles for category - ${category}`)
     .setTimestamp()
     .addFields(fields)

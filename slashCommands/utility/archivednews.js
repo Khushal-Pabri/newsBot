@@ -39,10 +39,10 @@ module.exports = {
         var i = 0;
         while (i < articles.length)
         {
-            const slicedArticles = articles.slice(i , i+9);
+            const slicedArticles = articles.slice(i , i+8);
             const embed = createArchivedNewsEmbed(category, slicedArticles);
             await interaction.followUp({ embeds: [embed] });
-            i = i + 9;
+            i = i + 8;
         }
 	},
 };

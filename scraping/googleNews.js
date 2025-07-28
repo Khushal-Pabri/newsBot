@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const News = require('../models/articles');
 require("dotenv").config()
 
 const categories = {
@@ -67,9 +68,9 @@ const scrapeCategory = async(page, category) => {
 
     return result || {};
 }
-
+//, executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
 const main = async (categoriesArray) => {
-    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'], headless: true, protocolTimeout: 10000, executablePath: process.env.PUPPETEER_EXECUTABLE_PATH});
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'], headless: true, protocolTimeout: 10000});
     
     const retryScrape = async (category, retries = 3) => {
         for (let attempt = 1; attempt <= retries; attempt++) {

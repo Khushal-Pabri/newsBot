@@ -14,6 +14,9 @@ const User = require('./models/user');
 //scraping job
 const { loadAndScheduleJobs, scheduleUserJob, cancelExistingJob } = require('./scraping/scheduleScraping')
 
+//embeds
+const createConformationEmbed = require('./embeds/conformation');
+
 client.on('ready', async (c) => {
     console.log(`Logged in as ${c.user.tag}!`);
 	//load and schedule jobs
@@ -88,7 +91,9 @@ client.on('interactionCreate', async (interaction) => {
 		await user.save();
 		console.log("updating profile")
 		await scheduleUserJob(user, interaction.client);
-		await interaction.reply(`Your profile has been updated!`);
+		const message = "Your profile has been updated!"
+		const embed = createConformationEmbed(message);
+		await interaction.reply({ embeds: [embed] });
 	}
 	else
 	{
@@ -98,7 +103,9 @@ client.on('interactionCreate', async (interaction) => {
 			preferences: interaction.values
 		})
 		await user.save();
-		await interaction.reply(`Your profile has been created!`);
+		const message = "Your profile has been created!"
+		const embed = createConformationEmbed(message);
+		await interaction.reply({ embeds: [embed] });
 	}
 });
 
